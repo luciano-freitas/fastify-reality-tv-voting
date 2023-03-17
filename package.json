@@ -1,0 +1,30 @@
+{
+  "name": "fastify-reality-tv-voting",
+  "version": "1.0.0",
+  "description": "aplication to vote in reality tv",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --inspect server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luciano-freitas/fastify-reality-tv-voting.git"
+  },
+  "author": "luciano.sfjtci@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luciano-freitas/fastify-reality-tv-voting/issues"
+  },
+  "homepage": "https://github.com/luciano-freitas/fastify-reality-tv-voting#readme",
+  "dependencies": {
+    "aws-sdk": "^2.1337.0",
+    "axios": "^1.3.4",
+    "dotenv": "^16.0.3",
+    "fastify": "^4.14.1",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}
