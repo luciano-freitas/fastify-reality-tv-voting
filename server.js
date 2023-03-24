@@ -25,6 +25,12 @@ fastify.addContentTypeParser('application/jsoff', function (request, payload, do
   })
 });
 
+fastify.get('/', (request, reply) =>{
+  return {
+    message: "Welcome to the project fastify-reality-tv-voting"
+  }
+})
+
 // ROUTER BY USERS
 fastify.get('/users', UserListController)
 fastify.get('/users/:documentNumber', UserGetController)
