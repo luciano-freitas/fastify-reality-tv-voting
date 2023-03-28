@@ -2,6 +2,7 @@
 require('dotenv').config();
 // require('newrelic');
 const fastify = require('fastify')({ logger: true });
+const { HealthcheckControlle } = require('./src/controllers/healthcheck');
 const {
   ParticipantListController,
   ParticipantGetController,
@@ -31,6 +32,9 @@ fastify.get('/', (request, reply) =>{
   }
 })
 
+//ROUTER HEALTHCHECK
+fastify.get('/healthcheck', HealthcheckControlle)
+
 // ROUTER BY USERS
 fastify.get('/users', UserListController)
 fastify.get('/users/:documentNumber', UserGetController)
@@ -49,7 +53,10 @@ fastify.delete('/participants/:code', ParticipantDeleteController)
 // Run the server!
 const start = async () => {
   try {
-    await fastify.listen({ port: 3000 })
+    await fastify.listen({ 
+      port: process.env.SERVER_PORT,
+      host: process.env.SERVER_HOST
+     })
   } catch (err) {
     fastify.log.error(err)
     process.exit(1)
