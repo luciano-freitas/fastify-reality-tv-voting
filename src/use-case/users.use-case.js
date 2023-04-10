@@ -59,21 +59,12 @@ const UsersUseCase = {
 
   async votes(keys) {
     const { documentNumber, participant } = keys;
-    const userBefore = await UserRepository.get({ documentNumber });
-
-    if (userBefore?.participant === participant)
-      return { statusCode: 400, message: 'User already voted in this participant' };
-
     const [userUpdated, participantUpdated] = await (() => {
-      if (userBefore?.participant && userBefore?.participant != participant)
-        return Promise.all([
-          UserRepository.updateParticipant({ documentNumber }, { participant }),
-          ParticipantRepository.votes({ code: participant }, OPERATION.SUM),
-          ParticipantRepository.votes({ code: userBefore.participant }, OPERATION.SUB)
-        ]);
-
       return Promise.all([
-        UserRepository.updateParticipant({ documentNumber }, { participant }),
+        UserRepository.create({
+          documentNumber,
+          participant
+        }),
         ParticipantRepository.votes({ code: participant }, OPERATION.SUM),
       ]);
     })();
