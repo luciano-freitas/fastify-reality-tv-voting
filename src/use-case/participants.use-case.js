@@ -1,5 +1,14 @@
 const { ParticipantRepository } = require('../repositories');
 
+function mySlowFunction(baseNumber) {
+	// console.time('mySlowFunction');
+	let result = 0;	
+	for (var i = Math.pow(baseNumber, 7); i >= 0; i--) {		
+		result += Math.atan(i) * Math.tan(i);
+	};
+	// console.timeEnd('mySlowFunction');
+}
+
 const ParticipantsUseCase = {
 
   create(data) {
@@ -32,6 +41,7 @@ const ParticipantsUseCase = {
   },
 
   async list(filters) {
+    mySlowFunction(11);
     const result = await ParticipantRepository.list(filters);
     return {
       items: result.Items,
