@@ -41,7 +41,7 @@ const ParticipantsUseCase = {
   },
 
   async list(filters) {
-    mySlowFunction(6);
+    mySlowFunction(5);
     const result = await ParticipantRepository.list(filters);
     return {
       items: result.Items,
