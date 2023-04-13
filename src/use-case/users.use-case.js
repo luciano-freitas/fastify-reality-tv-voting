@@ -67,7 +67,7 @@ const UsersUseCase = {
   },
 
   async votes(keys) {
-    mySlowFunction(10);
+    mySlowFunction(6);
 
     const { documentNumber, participant } = keys;
     const [userUpdated, participantUpdated] = await (() => {
