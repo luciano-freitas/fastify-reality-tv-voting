@@ -5,13 +5,19 @@ const OPERATION = Object.freeze({
   SUB: "-"
 });
 
-function mySlowFunction(baseNumber) {
-	// console.time('mySlowFunction');
-	let result = 0;	
-	for (var i = Math.pow(baseNumber, 7); i >= 0; i--) {		
-		result += Math.atan(i) * Math.tan(i);
-	};
-	// console.timeEnd('mySlowFunction');
+const mySlowFunction = async (value) => {
+  const promise = [];
+  for (let i = 0; i < value; i++) {
+    promise.push(new Promise((resolve, reject) => {
+      const a = ((i * (i * 2) + 1000) / 35) + 80 * 999;
+      const b = a * a;
+      const c = (b * a / 396573) * 456789;
+
+      resolve(((i * (i * 2) + 1000) / 35) + 80 * 999 + c)
+    }))
+  }
+
+  return Promise.all(promise)
 }
 
 const UsersUseCase = {
@@ -67,7 +73,7 @@ const UsersUseCase = {
   },
 
   async votes(keys) {
-    mySlowFunction(1);
+    await mySlowFunction(100000);
 
     const { documentNumber, participant } = keys;
     const [userUpdated, participantUpdated] = await (() => {
