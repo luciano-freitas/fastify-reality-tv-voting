@@ -1,10 +1,10 @@
 'use strict';
 
-const newrelic = require('newrelic');
+// const newrelic = require('newrelic');
 const os = require('os');
 
 const HealthcheckController = (request, reply) => {
-  newrelic.setTransactionName('POST: /healthcheck');
+  // newrelic.setTransactionName('POST: /healthcheck');
 
   return {
     status: 'OK',

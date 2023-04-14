@@ -1,10 +1,10 @@
 'use strict';
 
-const newrelic = require('newrelic');
+// const newrelic = require('newrelic');
 const { UsersUseCase } = require('../../use-case');
 
 const UserDeleteController = (request, reply) => {
-  newrelic.setTransactionName('DELETE: /users/:documentNumber');
+  // newrelic.setTransactionName('DELETE: /users/:documentNumber');
 
   if (!request?.params)
     return reply.code(400).send({

@@ -1,10 +1,10 @@
 'use strict';
 
-const newrelic = require('newrelic');
+// const newrelic = require('newrelic');
 const { UsersUseCase } = require('../../use-case');
 
 const UserListController = (request, reply) => {
-  newrelic.setTransactionName('GET: /users');
+  // newrelic.setTransactionName('GET: /users');
 
   const { query } = request;
   const limit = query?.limit || 20;

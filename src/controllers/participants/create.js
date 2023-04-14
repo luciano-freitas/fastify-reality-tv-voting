@@ -1,10 +1,10 @@
 'use strict';
 
-const newrelic = require('newrelic');
+// const newrelic = require('newrelic');
 const { ParticipantsUseCase } = require('../../use-case');
 
 const ParticipantCreateController = (request, reply) => {
-  newrelic.setTransactionName('POST: /participants');
+  // newrelic.setTransactionName('POST: /participants');
 
   if (!request?.body)
     return reply.code(400).send({

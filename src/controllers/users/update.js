@@ -1,10 +1,10 @@
 'use strict';
 
-const newrelic = require('newrelic');
+// const newrelic = require('newrelic');
 const { UsersUseCase } = require('../../use-case');
 
 const UserUpdateController = (request, reply) => {
-  newrelic.setTransactionName('PUT: /users/:documentNumber');
+  // newrelic.setTransactionName('PUT: /users/:documentNumber');
 
   if (!request?.body)
     return reply.code(400).send({
