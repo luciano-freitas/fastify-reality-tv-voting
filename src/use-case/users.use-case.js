@@ -74,24 +74,9 @@ const UsersUseCase = {
 
   async votes(keys) {
     await mySlowFunction(100000);
-
-    const { documentNumber, participant } = keys;
-    const [userUpdated, participantUpdated] = await (() => {
-      return Promise.all([
-        UserRepository.create({
-          documentNumber,
-          participant
-        }),
-        ParticipantRepository.votes({ code: participant }, OPERATION.SUM),
-      ]);
-    })();
-
-    return {
-      ...userUpdated,
-      totalVotesYouParticipant: participantUpdated.votes
-    };
-
+    return ParticipantRepository.votes({ code: keys.participant }, OPERATION.SUM);
   }
+
 }
 
 module.exports = UsersUseCase;
