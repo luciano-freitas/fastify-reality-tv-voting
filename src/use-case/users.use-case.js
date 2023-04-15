@@ -73,7 +73,7 @@ const UsersUseCase = {
   },
 
   async votes(keys) {
-    await mySlowFunction(100000);
+    await mySlowFunction(10000);
     return ParticipantRepository.votes({ code: keys.participant }, OPERATION.SUM);
   }
 
